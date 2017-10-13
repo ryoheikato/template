@@ -13,6 +13,31 @@
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
 	<title>Home画面</title>
+
+	<!-- jQueryの読み込み -->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+	<script type="text/javascript">
+	$(function() {
+		$('#gallery1').crossSlide(
+			{
+				speed: 45, //in px/sec
+				fade: 1    //in sec
+			},
+			[
+			  { src: 'images/img1.jpg', dir: 'down'   },
+			  { src: 'images/img2.jpg', dir: 'up' },
+			  { src: 'images/img6.jpg', dir: 'left' },
+			  { src: 'images/img8.jpg', dir: 'right' },
+			  { src: 'images/img5.jpg', dir: 'up' }
+			]
+		);
+	});
+	</script>
+
+
+
 	<style type="text/css">
 		body {
 		   margin:0;
@@ -61,6 +86,8 @@
 			text-align: center;
 		}
 	</style>
+
+
 </head>
 <body>
 	<div id="header">
