@@ -21,7 +21,7 @@
 <script src="js/jquery.flexslider-min.js"></script>
 
 <script>
-		 $(window).load(function () {
+			$(function() {
              $('.flexslider').flexslider({
                  slideshowSpeed: 5000,
                  /*mousewheel: true,*/
@@ -68,7 +68,7 @@ table {
 
 #main {
 	width: 100%;
-	height: 500px;
+	height: 1000px;
 	text-align: center;
 }
 
@@ -84,11 +84,7 @@ table {
 	text-align: center;
 }
 
-#slideshow {
-	width: 100%;
-	height: 300px;
-	margin: 100px auto 0 auto;
-}
+
 </style>
 
 
