@@ -26,11 +26,11 @@
 				fade: 1    //in sec
 			},
 			[
-			  { src: 'images/img1.jpg', dir: 'down'   },
-			  { src: 'images/img2.jpg', dir: 'up' },
-			  { src: 'images/img6.jpg', dir: 'left' },
-			  { src: 'images/img8.jpg', dir: 'right' },
-			  { src: 'images/img5.jpg', dir: 'up' }
+			  { src: "img/roomA.jpeg", dir: 'down'   },
+			  { src: 'img/roomB.jpeg', dir: 'up' },
+			  { src: 'img/roomC.jpeg', dir: 'left' },
+			  { src: 'img/roomD.jpeg', dir: 'right' },
+			  { src: 'img/roomE.jpeg', dir: 'up' }
 			]
 		);
 	});
