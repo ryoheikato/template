@@ -20,35 +20,18 @@ create table reservation_info(
 reservation_id int not null primary key auto_increment,
 room_name varchar(30),
 reservation_price int,
-num_of_user int,
-phone_num varchar(20),
-reservation_date timestamp default 0,
-reservation_time int(5)
-insert_date timestamp default 0,
-update_date current_timestamp on update current_timestamp,
-delete_date timestamp
-);
-
-drop table if exists user_buy_item_transaction;
-
-create table user_buy_item_transaction(
-id int not null primary key auto_increment,
-item_transaction_id int,
-total_price int,
-total_count int,
-user_master_id varchar(16),
-pay varchar(30),
-insert_date datetime,
-delete_date datetime
+item_image varchar(255) not null
 );
 
 
-INSERT INTO reservation_info(room_name, reservation_price,item_image) VALUES
-("ルームA", 1000,".img/roomA.jpeg"),
-("ルームB", 2000,".img/roomB.jpeg"),
-("ルームC", 3000,".img/roomC.jpeg"),
-("ルームD", 4000,".img/roomD.jpeg"),
-("ルームE", 5000,".img/roomE.jpeg");
+INSERT INTO reservation_info(reservation_id, room_name, reservation_price, item_image) VALUES
+(1, "ルームA", 1000,"img/roomA.jpg"),
+(2, "ルームB", 2000,"img/roomB.jpg"),
+(3, "ルームC", 3000,"img/roomC.jpg"),
+(4, "ルームD", 4000,"img/roomD.jpg"),
+(5, "ルームE", 5000,"img/roomE.jpg");
+
+
 INSERT INTO login_user_info(login_id, login_pass, user_name) VALUES
 ("internous", "internous01", "test");
 

@@ -20,7 +20,7 @@
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="js/jquery.flexslider-min.js"></script>
 
-<script>
+	<script>
 			$(function() {
              $('.flexslider').flexslider({
                  slideshowSpeed: 5000,
@@ -57,7 +57,8 @@ table {
 #top {
 	width: 780px;
 	margin: 30px auto;
-	border: 1px solid #333;
+	border: 1px solid #FFFFFF;
+	color: #FFFFFF;
 }
 
 #header {
@@ -84,6 +85,9 @@ table {
 	text-align: center;
 }
 
+.flexslider {
+	background-color:#FFFFFF;
+}
 
 </style>
 
@@ -100,20 +104,15 @@ table {
 
 		<div class="flexslider">
                 <ul class="slides">
-                    <li><img src="img/roomA.jpeg" alt="" width="840" height="430" />
-                        <p class="flex-caption">text1</p>
+                    <li><img src="<s:property value="roomA"/>" alt="" width="840" height="430" />
                     </li>
-                    <li><img src="img/roomB.jpeg" alt="" width="840" height="430" />
-                        <p class="flex-caption">text2</p>
+                    <li><img src="<s:property value="roomB"/>" alt="" width="840" height="430" />
                     </li>
-                    <li><img src="img/roomC.jpeg" alt="" width="840" height="430" />
-                        <p class="flex-caption">text3</p>
+                    <li><img src="<s:property value="roomC"/>" alt="" width="840" height="430" />
                     </li>
-                    <li><img src="img/roomD.jpeg" alt="" width="840" height="430" />
-                        <p class="flex-caption">text4</p>
+                    <li><img src="<s:property value="roomD"/>" alt="" width="840" height="430" />
                     </li>
-                    <li><img src="img/roomE.jpeg" alt="" width="840" height="430" />
-                        <p class="flex-caption">text5</p>
+                    <li><img src="<s:property value="roomE"/>" alt="" width="840" height="430" />
                     </li>
                 </ul>
             </div>
