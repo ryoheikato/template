@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.internousdev.template.dto.ReservationInfoDTO;
+import com.internousdev.template.util.DBConnector;
 
 /**
  * @author internousdev
@@ -18,7 +19,7 @@ import com.internousdev.template.dto.ReservationInfoDTO;
 public class HomeDAO {
 	public ArrayList<ReservationInfoDTO> select(){
 		ArrayList<ReservationInfoDTO> reservationList = new ArrayList<ReservationInfoDTO>();
-		MySqlConnector db=new MySqlConnector("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/ecsite", "template", "root","mysql");
+		DBConnector db=new DBConnector();
 		Connection con = db.getConnection();
 
 		String sql = "SELECT * FROM reservation_info";

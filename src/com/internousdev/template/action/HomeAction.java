@@ -1,10 +1,13 @@
 package com.internousdev.template.action;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.template.dao.HomeDAO;
+import com.internousdev.template.dto.ReservationInfoDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class HomeAction extends ActionSupport implements SessionAware {
@@ -17,6 +20,11 @@ public class HomeAction extends ActionSupport implements SessionAware {
 	private String roomD;
 	private String roomE;
 
+	private HomeDAO homeDAO = new HomeDAO();
+
+	// DAOからの戻り値を取得する箱
+	private ArrayList<ReservationInfoDTO> reservationInfoDTOList;
+
 	/**
 	 * ログインボタン押下時に実行
 	 * ログイン画面へ遷移します。
@@ -24,7 +32,15 @@ public class HomeAction extends ActionSupport implements SessionAware {
 	 * @return SUCCESS
 	 */
 	public String execute() {
-		String result = "login";
+		String result = SUCCESS;
+
+		reservationInfoDTOList = homeDAO.select();
+		roomA = reservationInfoDTOList.get(0).getItem_image();
+		roomB = reservationInfoDTOList.get(1).getItem_image();
+		roomC = reservationInfoDTOList.get(2).getItem_image();
+		roomD = reservationInfoDTOList.get(3).getItem_image();
+		roomE = reservationInfoDTOList.get(4).getItem_image();
+
 		if (session.containsKey("id")) {
 			loginUserInfoMap.putAll(session);
 			result = SUCCESS;
