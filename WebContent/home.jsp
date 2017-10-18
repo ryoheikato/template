@@ -17,6 +17,7 @@
 <link rel="stylesheet" type="text/css" href="css/demo.css" />
 <link rel="stylesheet" type="text/css" href="css/slicebox.css" />
 <link rel="stylesheet" type="text/css" href="css/custom.css" />
+<link rel="stylesheet" type="text/css" href="css/menu.css" />
 
 <!-- jQueryの読み込み -->
 <script src="js/jquery-3.2.1.min.js"></script>
@@ -44,23 +45,22 @@ table {
 }
 
 /* ========TEMPLATE LAYOUT======== */
-#top {
-	width: 780px;
-	margin: 30px auto;
-	border: 1px solid #FFFFFF;
-	color: #FFFFFF;
-}
+
 
 #header {
 	width: 100%;
-	height: 80px;
 	background-color: black;
+
+	margin: 0 auto;
+	margin-top: 80px;
+	max-width: 326px;
 }
 
 #main {
 	width: 100%;
 	height: 1000px;
 	text-align: center;
+	margin-top :100px;
 }
 
 #footer {
@@ -82,12 +82,16 @@ table {
 </head>
 <body>
 	<div id="header">
-
+		<div id="menu-container">
+			<ul id="navigationMenu">
+				<li><a href="#" class="selectedMenu">HOME</a></li>
+				<li><a href="#" class="normalMenu">RESERVATION</a></li>
+				<li><a href="#" class="normalMenu">FACILITY</a></li>
+				<li><a href="LoginAction" class="normalMenu">LOGIN</a></li>
+			</ul>
+		</div>
 	</div>
 	<div id="main">
-		<div id="top">
-			<p>Home</p>
-		</div>
 
 			<div class="wrapper">
 
@@ -125,6 +129,7 @@ table {
 <!--ダウンロードしたファイル-->
 <script src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="js/jquery.slicebox.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
 <!--javascript追記-->
 	<script type="text/javascript">
 		$(function() {

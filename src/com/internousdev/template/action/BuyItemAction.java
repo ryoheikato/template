@@ -6,15 +6,15 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.internousdev.template.dao.BuyItemDAO;
+import com.internousdev.template.dao.ReservationInfoDAO;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class BuyItemAction extends ActionSupport implements SessionAware {
+public class ReservationInfoAction extends ActionSupport implements SessionAware {
 
 	/**
 	 * アイテム情報を取得
 	 */
-	public BuyItemDAO buyItemDAO = new BuyItemDAO();
+	public ReservationInfoDAO ReservationInfoDAO = new ReservationInfoDAO();
 
 	/**
 	 * アイテム購入個数
@@ -29,7 +29,7 @@ public class BuyItemAction extends ActionSupport implements SessionAware {
 	/**
 	 * アイテム情報を格納
 	 */
-	public Map<String, Object>  buyItemInfoMap = new HashMap<>();
+	public Map<String, Object>  ReservationInfoInfoMap = new HashMap<>();
 
 	/**
 	 * 処理結果
@@ -43,21 +43,21 @@ public class BuyItemAction extends ActionSupport implements SessionAware {
 	 */
 	public String execute() {
 		result = SUCCESS;
-		buyItemInfoMap.put("count", count);
-		int intCount = Integer.parseInt(buyItemInfoMap.get("count").toString());
-		int intPrice = Integer.parseInt(buyItemInfoMap.get("buyItem_price").toString());
+		ReservationInfoInfoMap.put("count", count);
+		int intCount = Integer.parseInt(ReservationInfoInfoMap.get("count").toString());
+		int intPrice = Integer.parseInt(ReservationInfoInfoMap.get("ReservationInfo_price").toString());
 
-		buyItemInfoMap.put("total_price", intCount * intPrice);
+		ReservationInfoInfoMap.put("total_price", intCount * intPrice);
 		String payment;
 
 		if(pay.equals("1")) {
 
 			payment = "現金払い";
-			buyItemInfoMap.put("pay", payment);
+			ReservationInfoInfoMap.put("pay", payment);
 		} else {
 
 			payment = "クレジットカード";
-			buyItemInfoMap.put("pay", payment);
+			ReservationInfoInfoMap.put("pay", payment);
 		}
 		return result;
 	}
@@ -79,7 +79,7 @@ public class BuyItemAction extends ActionSupport implements SessionAware {
 	}
 
 	@Override
-	public void setSession(Map<String, Object> buyItemInfoMap) {
-		this.buyItemInfoMap = buyItemInfoMap;
+	public void setSession(Map<String, Object> ReservationInfoInfoMap) {
+		this.ReservationInfoInfoMap = ReservationInfoInfoMap;
 	}
 }

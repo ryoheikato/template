@@ -4,23 +4,23 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import com.internousdev.template.dto.BuyItemDTO;
+import com.internousdev.template.dto.ReservationInfoDTO;
 import com.internousdev.template.util.DBConnector;
 
-public class BuyItemDAO {
+public class ReservationInfoDAO {
 
 	private DBConnector dbConnector = new DBConnector();
 
 	private Connection connection = dbConnector.getConnection();
 
-	private BuyItemDTO buyItemDTO = new BuyItemDTO();
+	private ReservationInfoDTO reservationInfoDTO = new ReservationInfoDTO();
 
 	/**
 	 * 商品情報取得メソッド
 	 *
-	 * @return BuyItemDTO
+	 * @return ReservationInfoDTO
 	 */
-	public BuyItemDTO getBuyItemInfo() {
+	public ReservationInfoDTO getReservationInfo() {
 
 		String sql = "SELECT id, item_name, item_price FROM item_info_transaction";
 
@@ -29,19 +29,19 @@ public class BuyItemDAO {
 			ResultSet resultSet = preparedStatement.executeQuery();
 
 			if(resultSet.next()) {
-				buyItemDTO.setId(resultSet.getInt("id"));
-				buyItemDTO.setItemName(resultSet.getString("item_name"));
-				buyItemDTO.setItemPrice(resultSet.getString("item_price"));
+				reservationInfoDTO.setId(resultSet.getInt("reservation_id"));
+				reservationInfoDTO.setItemName(resultSet.getString("room_name"));
+				reservationInfoDTO.setItemPrice(resultSet.getInt("reservation_price"));
 			}
 
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 
-		return buyItemDTO;
+		return reservationInfoDTO;
 	}
 
-	public BuyItemDTO getBuyItemDTO() {
-		return buyItemDTO;
+	public ReservationInfoDTO getReservationInfoDTO() {
+		return reservationInfoDTO;
 	}
 }
