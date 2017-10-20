@@ -37,7 +37,7 @@ public class ReservationInfoAction extends ActionSupport implements SessionAware
 	public String result;
 
 	/**
-	 * 商品情報取得メソッド
+	 * 予約情報取得メソッド
 	 *
 	 * @author internous
 	 */
@@ -45,7 +45,7 @@ public class ReservationInfoAction extends ActionSupport implements SessionAware
 		result = SUCCESS;
 		ReservationInfoMap.put("count", count);
 		int intCount = Integer.parseInt(ReservationInfoMap.get("count").toString());
-		int intPrice = Integer.parseInt(ReservationInfoMap.get("ReservationInfo_price").toString());
+		int intPrice = Integer.parseInt(ReservationInfoMap.get("reservation_price").toString());
 
 		ReservationInfoMap.put("total_price", intCount * intPrice);
 		String payment;

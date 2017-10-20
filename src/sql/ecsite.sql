@@ -17,11 +17,17 @@ updated_date datetime
 drop table if exists reservation_info;
 
 create table reservation_info(
+user_id int not null primary key auto_increment,
 reservation_id int not null primary key auto_increment,
 room_name varchar(30),
 reservation_price int,
-item_image varchar(255) not null
+item_image varchar(255) not null,
+am_flag int,
+pm_flag int,
+room_flag boolean default false,
+reservation_time varchar(15) not null
 );
+
 
 
 INSERT INTO reservation_info(reservation_id, room_name, reservation_price, item_image) VALUES

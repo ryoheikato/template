@@ -85,7 +85,7 @@ table {
 		<div id="menu-container">
 			<ul id="navigationMenu">
 				<li><a href="#" class="selectedMenu">HOME</a></li>
-				<li><a href="#" class="normalMenu">RESERVATION</a></li>
+				<li><a href="ReservationInfoAction" class="normalMenu">RESERVATION</a></li>
 				<li><a href="#" class="normalMenu">FACILITY</a></li>
 				<li><a href="LoginAction" class="normalMenu">LOGIN</a></li>
 			</ul>

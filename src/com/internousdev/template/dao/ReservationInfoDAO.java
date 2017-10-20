@@ -22,7 +22,7 @@ public class ReservationInfoDAO {
 	 */
 	public ReservationInfoDTO getReservationInfo() {
 
-		String sql = "SELECT reservation_id, room_name, reservation_price FROM reservation_info";
+		String sql = "SELECT user_id, reservation_id, room_name, reservation_price, am_flag, pm_flag, room_flag FROM reservation_info";
 
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
