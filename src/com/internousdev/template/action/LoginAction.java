@@ -5,10 +5,10 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.internousdev.template.dao.BuyItemDAO;
 import com.internousdev.template.dao.LoginDAO;
-import com.internousdev.template.dto.BuyItemDTO;
+import com.internousdev.template.dao.ReservationInfoDAO;
 import com.internousdev.template.dto.LoginDTO;
+import com.internousdev.template.dto.ReservationInfoDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
@@ -57,7 +57,7 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	/**
 	 * アイテム情報を取得
 	 */
-	public BuyItemDAO buyItemDAO = new BuyItemDAO();
+	public ReservationInfoDAO ReservationInfoDAO = new ReservationInfoDAO();
 
 	/**
 	 * 実行メソッド
@@ -76,11 +76,11 @@ public class LoginAction extends ActionSupport implements SessionAware{
 			result = SUCCESS;
 
 			// アイテム情報を取得
-			BuyItemDTO buyItemDTO = buyItemDAO.getBuyItemInfo();
-			loginUserInfoMap.put("login_user_id",	loginDTO.getLoginId());
-			loginUserInfoMap.put("id", buyItemDTO.getId());
-			loginUserInfoMap.put("buyItem_name", buyItemDTO.getItemName());
-			loginUserInfoMap.put("buyItem_price", buyItemDTO.getItemPrice());
+			ReservationInfoDTO ReservationInfoDTO = ReservationInfoDAO.getReservationInfo();
+			loginUserInfoMap.put("login_user_id", loginDTO.getLoginId());
+			loginUserInfoMap.put("reservation_id", ReservationInfoDTO.getReservation_id());
+			loginUserInfoMap.put("room_name", ReservationInfoDTO.getRoom_name());
+			loginUserInfoMap.put("reservation_price", ReservationInfoDTO.getReservation_price());
 
 			return result;
 		}

@@ -7,9 +7,9 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class BuyItemComplateAction extends ActionSupport implements SessionAware{
+public class ReservationComplateAction extends ActionSupport implements SessionAware{
 
-	public Map<String,Object> buyItemInfoSession = new HashMap<String, Object>();
+	public Map<String,Object> ReservationInfoSession = new HashMap<String, Object>();
 
 	public String result;
 
@@ -25,7 +25,7 @@ public class BuyItemComplateAction extends ActionSupport implements SessionAware
 	}
 
 	@Override
-	public void setSession(Map<String, Object> buyItemInfoSession) {
-		this.buyItemInfoSession = buyItemInfoSession;
+	public void setSession(Map<String, Object> ReservationInfoSession) {
+		this.ReservationInfoSession = ReservationInfoSession;
 	}
 }

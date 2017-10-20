@@ -22,16 +22,16 @@ public class ReservationInfoDAO {
 	 */
 	public ReservationInfoDTO getReservationInfo() {
 
-		String sql = "SELECT id, item_name, item_price FROM item_info_transaction";
+		String sql = "SELECT reservation_id, room_name, reservation_price FROM reservation_info";
 
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			ResultSet resultSet = preparedStatement.executeQuery();
 
 			if(resultSet.next()) {
-				reservationInfoDTO.setId(resultSet.getInt("reservation_id"));
-				reservationInfoDTO.setItemName(resultSet.getString("room_name"));
-				reservationInfoDTO.setItemPrice(resultSet.getInt("reservation_price"));
+				reservationInfoDTO.setReservation_id(resultSet.getInt("reservation_id"));
+				reservationInfoDTO.setRoom_name(resultSet.getString("room_name"));
+				reservationInfoDTO.setReservation_price(resultSet.getInt("reservation_price"));
 			}
 
 		} catch(Exception e) {

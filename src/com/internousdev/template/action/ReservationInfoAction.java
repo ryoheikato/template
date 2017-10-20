@@ -29,7 +29,7 @@ public class ReservationInfoAction extends ActionSupport implements SessionAware
 	/**
 	 * アイテム情報を格納
 	 */
-	public Map<String, Object>  ReservationInfoInfoMap = new HashMap<>();
+	public Map<String, Object>  ReservationInfoMap = new HashMap<>();
 
 	/**
 	 * 処理結果
@@ -43,21 +43,21 @@ public class ReservationInfoAction extends ActionSupport implements SessionAware
 	 */
 	public String execute() {
 		result = SUCCESS;
-		ReservationInfoInfoMap.put("count", count);
-		int intCount = Integer.parseInt(ReservationInfoInfoMap.get("count").toString());
-		int intPrice = Integer.parseInt(ReservationInfoInfoMap.get("ReservationInfo_price").toString());
+		ReservationInfoMap.put("count", count);
+		int intCount = Integer.parseInt(ReservationInfoMap.get("count").toString());
+		int intPrice = Integer.parseInt(ReservationInfoMap.get("ReservationInfo_price").toString());
 
-		ReservationInfoInfoMap.put("total_price", intCount * intPrice);
+		ReservationInfoMap.put("total_price", intCount * intPrice);
 		String payment;
 
 		if(pay.equals("1")) {
 
 			payment = "現金払い";
-			ReservationInfoInfoMap.put("pay", payment);
+			ReservationInfoMap.put("pay", payment);
 		} else {
 
 			payment = "クレジットカード";
-			ReservationInfoInfoMap.put("pay", payment);
+			ReservationInfoMap.put("pay", payment);
 		}
 		return result;
 	}
@@ -79,7 +79,7 @@ public class ReservationInfoAction extends ActionSupport implements SessionAware
 	}
 
 	@Override
-	public void setSession(Map<String, Object> ReservationInfoInfoMap) {
-		this.ReservationInfoInfoMap = ReservationInfoInfoMap;
+	public void setSession(Map<String, Object> ReservationInfoMap) {
+		this.ReservationInfoMap = ReservationInfoMap;
 	}
 }
