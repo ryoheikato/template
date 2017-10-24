@@ -69,7 +69,7 @@
 			<p>Reservation</p>
 		</div>
 		<div>
-		<s:form action="　　　　　Action">
+		<s:form action="ReservationInfoAction">
 			<table>
 				<tr>
 					<td>
@@ -117,7 +117,7 @@
 				</tr>
 				<tr>
 					<td>
-						<s:submit value="購入"/>
+						<s:submit value="予約"/>
 					</td>
 				</tr>
 			</table>

@@ -43,23 +43,6 @@
 			<result name="success">userCreateComplate.jsp</result>
 		</action>
 
-		<!-- BuyItemAction -->
-		<action name="BuyItemAction" class="com.internousdev.template.action.BuyItemAction" method="execute">
-			<result name="success">buyItemConfirm.jsp</result>
-			<result name="error">buyItem.jsp</result>
-		</action>
-
-		<!-- BuyItemConfirmAction -->
-		<action name="BuyItemConfirmAction" class="com.internousdev.template.action.BuyItemConfirmAction" method="execute">
-			<result name="success">buyItemComplate.jsp</result>
-			<result name="back">buyItem.jsp</result>
-		</action>
-
-		<!-- BuyItemComplateAction -->
-		<action name="BuyItemComplateAction" class="com.internousdev.template.action.BuyItemComplateAction" method="execute">
-			<result name="success">home.jsp</result>
-		</action>
-
 		<!-- MyPageAction -->
 		<action name="MyPageAction" class="com.internousdev.template.action.MyPageAction" method="execute">
 			<result name="success">myPage.jsp</result>

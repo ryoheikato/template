@@ -18,6 +18,13 @@ public class ReservationInfoDTO {
 
 	private String item_image;
 
+	private int am_flag;
+
+	private int pm_flag;
+
+	private int room_flag;
+
+
 	/**
 	 * @return reservation_id
 	 */
@@ -72,6 +79,48 @@ public class ReservationInfoDTO {
 	 */
 	public void setItem_image(String item_image) {
 		this.item_image = item_image;
+	}
+
+	/**
+	 * @return am_flag
+	 */
+	public int getAm_flag() {
+		return am_flag;
+	}
+
+	/**
+	 * @param am_flag セットする am_flag
+	 */
+	public void setAm_flag(int am_flag) {
+		this.am_flag = am_flag;
+	}
+
+	/**
+	 * @return pm_flag
+	 */
+	public int getPm_flag() {
+		return pm_flag;
+	}
+
+	/**
+	 * @param pm_flag セットする pm_flag
+	 */
+	public void setPm_flag(int pm_flag) {
+		this.pm_flag = pm_flag;
+	}
+
+	/**
+	 * @return room_flag
+	 */
+	public int getRoom_flag() {
+		return room_flag;
+	}
+
+	/**
+	 * @param room_flag セットする room_flag
+	 */
+	public void setRoom_flag(int room_flag) {
+		this.room_flag = room_flag;
 	}
 
 
