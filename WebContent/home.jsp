@@ -5,166 +5,210 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="Content-Style-Type" content="text/css" />
-<meta http-equiv="Content-Script-Type" content="text/javascript" />
-<meta http-equiv="imagetoolbar" content="no" />
-<meta name="description" content="" />
-<meta name="keywords" content="" />
-<title>Home画面</title>
+	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" />
+	<meta http-equiv="imagetoolbar" content="no" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<title>Home画面</title>
 
-<link rel="stylesheet" type="text/css" href="css/demo.css" />
-<link rel="stylesheet" type="text/css" href="css/slicebox.css" />
-<link rel="stylesheet" type="text/css" href="css/custom.css" />
-<link rel="stylesheet" type="text/css" href="css/menu.css" />
-
-<!-- jQueryの読み込み -->
-<script src="js/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="js/modernizr.custom.46884.js"></script>
+	<script src="js/jquery-3.2.1.min.js"></script>
 
 
-<style type="text/css">
-body {
-	margin: 0;
-	padding: 0;
-	line-height: 1.6;
-	letter-spacing: 1px;
-	font-family: Verdana, Helvetica, sans-serif;
-	font-size: 12px;
-	color: #333;
-	background: #fff;
-	background-image: url("img/backimage.jpeg");
-	background-size: cover;
-	background-attachment:fixed;
-}
+	<style type="text/css">
+		body {
+		   margin:0;
+		   padding:0;
+		   line-height:1.6;
+		   letter-spacing:1px;
+		   font-family:Verdana, Helvetica, sans-serif;
+		   font-size:12px;
+		   color:#333;
+		   background:#fff;
+		}
 
-table {
-	text-align: center;
-	margin: 0 auto;
-}
+		table {
+			text-align:center;
+			margin:0 auto;
+		}
 
-/* ========TEMPLATE LAYOUT======== */
+		/* ========TEMPLATE LAYOUT======== */
 
 
-#header {
-	width: 100%;
-	background-color: black;
-
-	margin: 0 auto;
-	margin-top: 80px;
-	max-width: 326px;
-}
-
-#main {
-	width: 100%;
-	height: 1000px;
-	text-align: center;
-	margin-top :100px;
-}
-
-#footer {
-	width: 100%;
-	height: 80px;
-	background-color: black;
-	clear: both;
-}
-
-#text-center {
-	display: inline-block;
-	text-align: center;
-}
 
 
-</style>
+		#main {
+		   width: 100%;
+		   height: 500px;
+		   text-align: center;
+		}
 
 
+
+		#text-center {
+			display: inline-block;
+			text-align: center;
+		}
+	</style>
 </head>
 <body>
 	<div id="header">
-		<div id="menu-container">
-			<ul id="navigationMenu">
-				<li><a href="#" class="selectedMenu">HOME</a></li>
-				<li><a href="ReservationInfoAction" class="normalMenu">RESERVATION</a></li>
-				<li><a href="#" class="normalMenu">FACILITY</a></li>
-				<li><a href="LoginAction" class="normalMenu">LOGIN</a></li>
-			</ul>
+	 	<div id="pr">
 		</div>
 	</div>
 	<div id="main">
-
-			<div class="wrapper">
-
-			  <ul id="sb-slider" class="sb-slider">
-                    <li><img src="<s:property value="roomA"/>" alt="" width="840" height="430" />
-                    </li>
-                    <li><img src="<s:property value="roomB"/>" alt="" width="840" height="430" />
-                    </li>
-                    <li><img src="<s:property value="roomC"/>" alt="" width="840" height="430" />
-                    </li>
-                    <li><img src="<s:property value="roomD"/>" alt="" width="840" height="430" />
-                    </li>
-                    <li><img src="<s:property value="roomE"/>" alt="" width="840" height="430" />
-                    </li>
-                </ul>
-            </div>
-
+		<div id="top">
+			<p>Home</p>
+		</div>
 
 		<div id="text-center">
 			<s:form action="HomeAction">
-				<s:submit value="商品購入" />
+				<s:submit value="商品購入"/>
 			</s:form>
 			<s:if test="#session.id != null">
-				<p>
-					ログアウトする場合は<a href='<s:url action="LogoutAction" />'>こちら</a>
-				</p>
+				<p>ログアウトする場合は<a href='<s:url action="LogoutAction" />'>こちら</a></p>
 			</s:if>
 		</div>
 	</div>
-	<div id="footer">
-		<div id="pr"></div>
-	</div>
 
 
-<!--ダウンロードしたファイル-->
-<script src="js/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="js/jquery.slicebox.js"></script>
-<script type="text/javascript" src="js/script.js"></script>
-<!--javascript追記-->
-	<script type="text/javascript">
-		$(function() {
-			var Page = (function() {
-				var $navArrows = $('#nav-arrows').hide(), $shadow = $('#shadow')
-						.hide(), slicebox = $('#sb-slider').slicebox({
-					onReady : function() {
-						$navArrows.show();
-						$shadow.show();
-					},
-					orientation : 'r',
-					cuboidsRandom : true,
-					disperseFactor : 30,
-					autoplay : true,
-					interval: 4000
+<script>
+var links = [{label: 'link1', bg: '#c0392b'},
+             {label: 'link2', bg: '#16a085'},
+             {label: 'link3', bg: '#8e44ad'},
+             {label: 'link4', bg: '#27ae60'},
+             {label: 'link5', bg: '#f39c12'},
+             {label: 'link6', bg: '#2980b9'}];
+var windowHeight = window.innerHeight;
+if(windowHeight === 0) windowHeight = 238;
+var radius = windowHeight*0.6,
+    circle = document.createElement('div'),
+    borderSize = radius*0.021;
+    totalArea = 48,
+    increment = totalArea/(links.length-1),
+    startPoint = 0-(totalArea/2),
+    fontSize = radius*0.12,
+    linkSize = radius*0.25;
 
-				}), init = function() {
-					initEvents();
-				}, initEvents = function() {
-					// add navigation events
-					$navArrows.children(':first').on('click', function() {
-						slicebox.next();
-						return false;
-					});
-					$navArrows.children(':last').on('click', function() {
-						slicebox.previous();
-						return false;
-					});
-				};
-				return {
-					init : init
-				};
-			})();
-			Page.init();
-		});
+styleCircle();
+addCircle();
+addLinks();
+styleLinks();
+
+function styleCircle() {
+  circle.style.border= borderSize+'px solid #fff';
+  circle.style.width = radius*2+'px';
+  circle.style.height = radius*2+'px';
+  circle.style.borderRadius = radius+'px';
+  circle.style.position = 'absolute';
+  circle.style.top = '-'+radius*0.2+'px';
+  circle.style.left = radius*-1+'px';
+}
+
+function addCircle() {
+  document.body.appendChild(circle);
+}
+
+function addLinks() {
+  for (var i=0, l=links.length; i<l; i++) {
+    link = document.createElement('a'),
+    hover = document.createElement('span');
+    link.href = "#";
+    link.dataset.color = links[i].bg;
+    link.style.display = 'inline-block';
+    link.style.textDecoration = 'none';
+    link.style.color = '#fff';
+    link.style.position = 'absolute';
+    link.style.zIndex = 100;
+    link.innerHTML = links[i].label;
+    hover.style.position = 'absolute';
+    hover.style.display = 'inline-block';
+    hover.style.zIndex = 50;
+    hover.style.opacity = 0;
+    document.body.appendChild(link);
+    document.body.appendChild(hover);
+    link.addEventListener('mouseover', linkOver);
+    link.addEventListener('mouseout', linkOut);
+    links[i].elem = link;
+    links[i].hover = hover;
+  }
+}
+
+function styleLinks() {
+  for (var i=0, l=links.length; i<l; i++) {
+    var link = links[i].elem, hover = links[i].hover, deg = startPoint+(i*increment);
+    link.style.paddingLeft = radius*1.2+'px';
+    link.style.fontSize = fontSize+'px';
+    link.style.height = linkSize+'px';
+    link.style.lineHeight = linkSize+'px';
+    setTransformOrigin(link, '0px '+linkSize*0.5+'px');
+    setTransition(link, 'all 0.2s ease-out');
+    setTransform(link, 'rotate('+deg+'deg)');
+    link.style.left = borderSize+'px';
+    link.style.top = (windowHeight/2) - (windowHeight*0.1)+borderSize+'px';
+
+    hover.style.left = borderSize+'px';
+    setTransformOrigin(hover, '0px '+linkSize*0.5+'px');
+    setTransition(hover, 'all 0.2s ease-out');
+    setTransform(hover, 'rotate('+deg+'deg)');
+    hover.style.top = (windowHeight*0.4)+borderSize +'px';
+    hover.style.width = radius+(borderSize/2)+'px';
+    hover.style.height = linkSize+'px';
+    hover.style.borderRight = borderSize*2+'px solid #fff';
+
+  }
+}
+
+window.onresize = function() {
+  windowHeight = window.innerHeight;
+  radius = windowHeight*0.6,
+  borderSize = radius*0.021;
+  fontSize = radius*0.12,
+  linkSize = radius*0.25;
+  styleCircle();
+  styleLinks();
+}
+
+function linkOver(e) {
+  var thisLink = e.target, thisHover = thisLink.nextSibling;
+  thisLink.style.paddingLeft = radius*1.25+'px';
+  thisHover.style.opacity = 1;
+  document.body.style.backgroundColor = thisLink.dataset.color;
+}
+
+function linkOut(e) {
+  var thisLink = e.target, thisHover = thisLink.nextSibling;
+  thisLink.style.paddingLeft = radius*1.2+'px';
+  thisHover.style.opacity = 0;
+}
+
+function setTransform(element, string) {
+  element.style.webkitTransform = string;
+  element.style.MozTransform = string;
+  element.style.msTransform = string;
+  element.style.OTransform = string;
+  element.style.transform = string;
+}
+
+function setTransformOrigin(element, string) {
+  element.style.webkitTransformOrigin = string;
+  element.style.MozTransformOrigin = string;
+  element.style.msTransformOrigin = string;
+  element.style.OTransformOrigin = string;
+  element.style.transformOrigin = string;
+}
+
+function setTransition(element, string) {
+  element.style.webkitTransition = string;
+  element.style.MozTransition = string;
+  element.style.msTransition = string;
+  element.style.OTransition = string;
+  element.style.transition = string;
+}
+
 	</script>
+
 </body>
 </html>

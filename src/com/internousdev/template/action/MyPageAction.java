@@ -2,7 +2,6 @@ package com.internousdev.template.action;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -17,14 +16,12 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 	/**
 	 * ログイン情報を格納
 	 */
-	public Map<String, Object> loginInfoMap = new HashMap<>();
-	
-	public Map<String, Object> historyList = new HashMap<>();
+	public Map<String, Object> session;
 
 	/**
 	 * マイページ情報取得DAO
 	 */
-	public MyPageDAO myPageDAO = new MyPageDAO();
+	private MyPageDAO myPageDAO = new MyPageDAO();
 
 	/**
 	 * マイページ情報格納DTO
@@ -34,14 +31,9 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 	/**
 	 * 削除フラグ
 	 */
-	public String deleteFlg;
+	private String deleteFlg;
 
-	/**
-	 * 処理結果
-	 */
-	public String result;
-	
-	public String message = null;
+	private String message;
 
 	/**
 	 * 商品履歴取得メソッド
@@ -50,14 +42,14 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 	 */
 	public String execute() throws SQLException {
 
-		if (!loginInfoMap.containsKey("id")) {
+		if (!session.containsKey("id")) {
 			return ERROR;
 		}
 
 		// 商品履歴を削除しない場合
 		if(deleteFlg == null) {
-			String item_transaction_id = loginInfoMap.get("id").toString();
-			String user_master_id = loginInfoMap.get("login_user_id").toString();
+			String item_transaction_id = session.get("id").toString();
+			String user_master_id = session.get("login_user_id").toString();
 
 			myPageList = myPageDAO.getMyPageUserInfo(item_transaction_id, user_master_id);
 
@@ -70,7 +62,7 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 			delete();
 		}
 
-		result = SUCCESS;
+		String result = SUCCESS;
 		return result;
 	}
 
@@ -81,16 +73,16 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 	 */
 	public void delete() throws SQLException {
 
-		String item_transaction_id = loginInfoMap.get("id").toString();
-		String user_master_id = loginInfoMap.get("login_user_id").toString();
+		String item_transaction_id = session.get("id").toString();
+		String user_master_id = session.get("login_user_id").toString();
 
 		int res = myPageDAO.buyItemHistoryDelete(item_transaction_id, user_master_id);
 
 		if(res > 0) {
 			myPageList = null;
-			message = "商品情報を正しく削除しました。";
+			setMessage("商品情報を正しく削除しました。");
 		} else if(res == 0) {
-			message = "商品情報の削除に失敗しました。";
+			setMessage("商品情報の削除に失敗しました。");
 		}
 	}
 
@@ -105,7 +97,15 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 	}
 
 	@Override
-	public void setSession(Map<String, Object> loginSessionMap) {
-		this.loginInfoMap = loginSessionMap;
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
 	}
 }

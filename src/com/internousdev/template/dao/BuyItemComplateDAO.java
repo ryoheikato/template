@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import com.internousdev.template.util.DBConnector;
 import com.internousdev.template.util.DateUtil;
 
-public class ReservationComplateDAO {
+public class BuyItemComplateDAO {
 
 	private DBConnector dbConnector = new DBConnector();
 
@@ -27,7 +27,7 @@ public class ReservationComplateDAO {
 	 * @param pay
 	 * @throws SQLException
 	 */
-	public void buyItemInfo(String item_transaction_id, String user_master_id, String total_price, String total_count, String pay) throws SQLException {
+	public void buyItemeInfo(String item_transaction_id, String user_master_id, String total_price, String total_count, String pay) throws SQLException {
 
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);

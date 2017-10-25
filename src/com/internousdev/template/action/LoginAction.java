@@ -1,14 +1,13 @@
 package com.internousdev.template.action;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.template.dao.BuyItemDAO;
 import com.internousdev.template.dao.LoginDAO;
-import com.internousdev.template.dao.ReservationInfoDAO;
+import com.internousdev.template.dto.BuyItemDTO;
 import com.internousdev.template.dto.LoginDTO;
-import com.internousdev.template.dto.ReservationInfoDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
@@ -27,27 +26,22 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	/**
 	 * ログインID
 	 */
-	public String loginUserId;
+	private String loginUserId;
 
 	/**
 	 * ログインパスワード
 	 */
-	public String loginPassword;
-
-	/**
-	 * 処理結果を格納
-	 */
-	public String result;
+	private String loginPassword;
 
 	/**
 	 * ログイン情報を格納
 	 */
-	public Map<String, Object> loginUserInfoMap = new HashMap<>();
+	public Map<String, Object> session;
 
 	/**
 	 * ログイン情報取得DAO
 	 */
-	public LoginDAO loginDAO = new LoginDAO();
+	private LoginDAO loginDAO = new LoginDAO();
 
 	/**
 	 * ログイン情報格納IDTO
@@ -57,30 +51,30 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	/**
 	 * アイテム情報を取得
 	 */
-	public ReservationInfoDAO ReservationInfoDAO = new ReservationInfoDAO();
+	private BuyItemDAO buyItemDAO = new BuyItemDAO();
 
 	/**
 	 * 実行メソッド
 	 */
 	public String execute() {
 
-		result = ERROR;
+		String result = ERROR;
 
 		// ログイン実行
 		loginDTO = loginDAO.getLoginUserInfo(loginUserId, loginPassword);
 
-		loginUserInfoMap.put("loginUser", loginDTO);
+		session.put("loginUser", loginDTO);
 
 		// ログイン情報を比較
-		if(((LoginDTO) loginUserInfoMap.get("loginUser")).getLoginFlg()) {
+		if(((LoginDTO) session.get("loginUser")).getLoginFlg()) {
 			result = SUCCESS;
 
 			// アイテム情報を取得
-			ReservationInfoDTO ReservationInfoDTO = ReservationInfoDAO.getReservationInfo();
-			loginUserInfoMap.put("login_user_id", loginDTO.getLoginId());
-			loginUserInfoMap.put("reservation_id", ReservationInfoDTO.getReservation_id());
-			loginUserInfoMap.put("room_name", ReservationInfoDTO.getRoom_name());
-			loginUserInfoMap.put("reservation_price", ReservationInfoDTO.getReservation_price());
+			BuyItemDTO buyItemDTO = buyItemDAO.getBuyItemInfo();
+			session.put("login_user_id",	loginDTO.getLoginId());
+			session.put("id", buyItemDTO.getId());
+			session.put("buyItem_name", buyItemDTO.getItemName());
+			session.put("buyItem_price", buyItemDTO.getItemPrice());
 
 			return result;
 		}
@@ -105,7 +99,7 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	}
 
 	@Override
-	public void setSession(Map<String, Object> loginUserInfoMap) {
-		this.loginUserInfoMap = loginUserInfoMap;
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
 	}
 }

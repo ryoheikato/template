@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.internousdev.template.dto.ReservationInfoDTO;
+import com.internousdev.template.dto.BuyItemDTO;
 import com.internousdev.template.util.DBConnector;
 
 /**
@@ -17,23 +17,23 @@ import com.internousdev.template.util.DBConnector;
  *
  */
 public class HomeDAO {
-	public ArrayList<ReservationInfoDTO> select(){
-		ArrayList<ReservationInfoDTO> reservationList = new ArrayList<ReservationInfoDTO>();
+	public ArrayList<BuyItemDTO> select(){
+		ArrayList<BuyItemDTO> reservationList = new ArrayList<BuyItemDTO>();
 		DBConnector db=new DBConnector();
 		Connection con = db.getConnection();
 
-		String sql = "SELECT * FROM reservation_info";
+		String sql = "SELECT * FROM item_info";
 
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 
 			while(rs.next()){
-				ReservationInfoDTO dto = new ReservationInfoDTO();
-				dto.setReservation_id(rs.getInt("reservation_id"));
-				dto.setRoom_name(rs.getString("room_name"));
-				dto.setReservation_price(rs.getInt("reservation_price"));
-				dto.setItem_image(rs.getString("item_image"));
+				BuyItemDTO dto = new BuyItemDTO();
+				dto.setId(rs.getInt("id"));
+				dto.setItemName(rs.getString("item_name"));
+				dto.setItemPrice(rs.getInt("item_price"));
+				dto.setItemImage(rs.getString("item_image"));
 				reservationList.add(dto);
 			}
 

@@ -1,6 +1,5 @@
 package com.internousdev.template.action;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -14,29 +13,27 @@ import com.opensymphony.xwork2.ActionSupport;
  */
 public class UserCreateConfirmAction extends ActionSupport implements SessionAware {
 
-	public String loginUserId;
+	private String loginUserId;
 
-	public String loginPassword;
+	private String loginPassword;
 
-	public String userName;
+	private String userName;
 
-	public Map<String,Object> createUserSession = new HashMap<String, Object>();
+	public Map<String,Object> session;
 
-	public String result;
-
-	public String errorMassage;
+	private String errorMassage;
 
 	public String execute() {
 
-		result = SUCCESS;
+		String result = SUCCESS;
 
 		if(!(loginUserId.equals("")) && !(loginPassword.equals("")) && !(userName.equals(""))) {
-			createUserSession.put("loginUserId", loginUserId);
-			createUserSession.put("loginPassword", loginPassword);
-			createUserSession.put("userName", userName);
+			session.put("loginUserId", loginUserId);
+			session.put("loginPassword", loginPassword);
+			session.put("userName", userName);
 		} else {
 
-			errorMassage = "未入力の項目があります。";
+			setErrorMassage("未入力の項目があります。");
 			result = ERROR;
 		}
 
@@ -68,7 +65,15 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 	}
 
 	@Override
-	public void setSession(Map<String, Object> createUserSession) {
-		this.createUserSession = createUserSession;
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
+
+	public String getErrorMassage() {
+		return errorMassage;
+	}
+
+	public void setErrorMassage(String errorMassage) {
+		this.errorMassage = errorMassage;
 	}
 }

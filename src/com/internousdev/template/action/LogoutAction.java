@@ -1,6 +1,5 @@
 package com.internousdev.template.action;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -12,17 +11,18 @@ public class LogoutAction extends ActionSupport implements SessionAware {
 	/**
 	 * Session情報
 	 */
-	public Map<String, Object> sessionMap = new HashMap<>();
+	public Map<String, Object> session;
 
 	public String execute() {
 
-		sessionMap.clear();
-		return SUCCESS;
+		String result = SUCCESS;
+		session.clear();
+		return result;
 	}
 
 	@Override
-	public void setSession(Map<String, Object> sessionMap) {
-		this.sessionMap = sessionMap;
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
 	}
 
 }

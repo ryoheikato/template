@@ -13,7 +13,7 @@
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
 	<meta charset="utf-8">
-	<title>reservation画面</title>
+	<title>BuyItem画面</title>
 	<style type="text/css">
 	/* ========TAG LAYOUT======== */
 		body {
@@ -66,22 +66,17 @@
 	</div>
 	<div id="main">
 		<div id="top">
-			<p>Reservation</p>
+			<p>BuyItem</p>
 		</div>
 		<div>
-		<s:form action="ReservationInfoAction">
+		<s:form action="BuyItemAction">
 			<table>
 				<tr>
 					<td>
-						<span>予約ルーム</span>
+						<span>商品名</span>
 					</td>
 					<td>
-					<input type="radio" value="A" required name="room" checked>RoomＡ
-					<input type="radio" value="B" required name="room" >RoomＢ
-					<input type="radio" value="C" required name="room" >RoomＣ
-					<input type="radio" value="D" required name="room" >RoomＤ
-					<input type="radio" value="E" required name="room" >RoomＥ
-						<s:property value="" /><br>
+						<s:property value="session.buyItem_name" /><br>
 					</td>
 				</tr>
 				<tr>
@@ -89,12 +84,12 @@
 						<span>値段</span>
 					</td>
 					<td>
-						<s:property value="" /><span>円</span>
+						<s:property value="session.buyItem_price" /><span>円</span>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<span>利用予定人数</span>
+						<span>購入個数</span>
 					</td>
 					<td>
 						<select name="count">
@@ -117,7 +112,7 @@
 				</tr>
 				<tr>
 					<td>
-						<s:submit value="予約"/>
+						<s:submit value="購入"/>
 					</td>
 				</tr>
 			</table>

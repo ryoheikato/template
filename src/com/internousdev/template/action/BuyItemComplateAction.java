@@ -6,15 +6,19 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class GoHomeAction extends ActionSupport implements SessionAware {
-	public Map<String, Object> session;
+public class BuyItemComplateAction extends ActionSupport implements SessionAware{
 
+	public Map<String,Object> session;
+
+	/**
+	 * 商品購入情報登録完了メソッド
+	 *
+	 * @author internous
+	 */
 	public String execute() {
-		return SUCCESS;
-	}
 
-	public Map<String, Object> getSession() {
-		return this.session;
+		String result = SUCCESS;
+		return result;
 	}
 
 	@Override
