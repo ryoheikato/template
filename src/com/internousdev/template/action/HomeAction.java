@@ -35,11 +35,11 @@ public class HomeAction extends ActionSupport implements SessionAware {
 		String result = SUCCESS;
 
 		buyItemDTOList = homeDAO.select();
-		A = buyItemDTOList.get(0).getItemImage();
-		B = buyItemDTOList.get(1).getItemImage();
-		C = buyItemDTOList.get(2).getItemImage();
-		D = buyItemDTOList.get(3).getItemImage();
-		E = buyItemDTOList.get(4).getItemImage();
+		setA(buyItemDTOList.get(0).getItemImage());
+		setB(buyItemDTOList.get(1).getItemImage());
+		setC(buyItemDTOList.get(2).getItemImage());
+		setD(buyItemDTOList.get(3).getItemImage());
+		setE(buyItemDTOList.get(4).getItemImage());
 
 		if (session.containsKey("id")) {
 			loginUserInfoMap.putAll(session);
@@ -59,5 +59,75 @@ public class HomeAction extends ActionSupport implements SessionAware {
 
 	public Map<String, Object> getsession() {
 		return this.session;
+	}
+
+	/**
+	 * @return a
+	 */
+	public String getA() {
+		return A;
+	}
+
+	/**
+	 * @param a セットする a
+	 */
+	public void setA(String a) {
+		A = a;
+	}
+
+	/**
+	 * @return b
+	 */
+	public String getB() {
+		return B;
+	}
+
+	/**
+	 * @param b セットする b
+	 */
+	public void setB(String b) {
+		B = b;
+	}
+
+	/**
+	 * @return c
+	 */
+	public String getC() {
+		return C;
+	}
+
+	/**
+	 * @param c セットする c
+	 */
+	public void setC(String c) {
+		C = c;
+	}
+
+	/**
+	 * @return d
+	 */
+	public String getD() {
+		return D;
+	}
+
+	/**
+	 * @param d セットする d
+	 */
+	public void setD(String d) {
+		D = d;
+	}
+
+	/**
+	 * @return e
+	 */
+	public String getE() {
+		return E;
+	}
+
+	/**
+	 * @param e セットする e
+	 */
+	public void setE(String e) {
+		E = e;
 	}
 }

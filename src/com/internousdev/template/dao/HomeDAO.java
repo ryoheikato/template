@@ -18,7 +18,7 @@ import com.internousdev.template.util.DBConnector;
  */
 public class HomeDAO {
 	public ArrayList<BuyItemDTO> select(){
-		ArrayList<BuyItemDTO> reservationList = new ArrayList<BuyItemDTO>();
+		ArrayList<BuyItemDTO> buyitemList = new ArrayList<BuyItemDTO>();
 		DBConnector db=new DBConnector();
 		Connection con = db.getConnection();
 
@@ -34,7 +34,7 @@ public class HomeDAO {
 				dto.setItemName(rs.getString("item_name"));
 				dto.setItemPrice(rs.getInt("item_price"));
 				dto.setItemImage(rs.getString("item_image"));
-				reservationList.add(dto);
+				buyitemList.add(dto);
 			}
 
 			rs.close();
@@ -49,6 +49,6 @@ public class HomeDAO {
 				e.printStackTrace();
 			}
 		}
-		return reservationList;
+		return buyitemList;
 	}
 }

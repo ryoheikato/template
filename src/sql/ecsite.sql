@@ -16,7 +16,7 @@ updated_date datetime
 
 drop table if exists item_info;
 
-create table item_info_transaction(
+create table item_info(
 id int not null primary key auto_increment,
 item_name varchar(30),
 item_price int,
@@ -40,11 +40,11 @@ delete_date datetime
 );
 
 
-INSERT INTO item_info_transaction(item_name, item_price, item_stock, item_image) VALUES
-("ノートBook", 100, 50, img/);
-("",200 ,50 img/);
-("",300 ,50 img/);
-("",400 ,50 img/);
-("",500 ,50 img/);
+INSERT INTO item_info(item_name, item_price, item_stock, item_image) VALUES
+("A", 100, 50, "img/roomA.jpg"),
+("B", 200, 50, "img/roomB.jpg"),
+("C", 300, 50, "img/roomC.jpg"),
+("D", 400, 50, "img/roomD.jpg"),
+("E", 500, 50, "img/roomE.jpg");
 
 INSERT INTO login_user_transaction(login_id, login_pass, user_name) VALUES("internous", "internous01", "test");

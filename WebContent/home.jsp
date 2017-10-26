@@ -13,55 +13,82 @@
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
 	<title>Home画面</title>
+	<link rel="stylesheet" type="text/css" href="css/demo.css" />
+	<link rel="stylesheet" type="text/css" href="css/slicebox.css" />
+	<link rel="stylesheet" type="text/css" href="css/custom.css" />
+	<link rel="stylesheet" type="text/css" href="css/menu.css" />
+
 
 	<script src="js/jquery-3.2.1.min.js"></script>
-
+	<script type="text/javascript" src="js/modernizr.custom.46884.js"></script>
 
 	<style type="text/css">
-		body {
-		   margin:0;
-		   padding:0;
-		   line-height:1.6;
-		   letter-spacing:1px;
-		   font-family:Verdana, Helvetica, sans-serif;
-		   font-size:12px;
-		   color:#333;
-		   background:#fff;
-		}
+body {
+	margin: 0;
+	padding: 0;
+	line-height: 1.6;
+	letter-spacing: 1px;
+	font-family: Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #333;
+	background: #fff;
+}
 
-		table {
-			text-align:center;
-			margin:0 auto;
-		}
+table {
+	text-align: center;
+	margin: 0 auto;
+}
 
-		/* ========TEMPLATE LAYOUT======== */
+/* ========TEMPLATE LAYOUT======== */
+#header {
+	width: 100%;
+	background-color: black;
+	margin: 0 auto;
+	margin-top: 80px;
+	max-width: 323px;
+}
 
+#main {
+	width: 100%;
+	height: 500px;
+	text-align: center;
+	margin-top :100px;
+}
 
-
-
-		#main {
-		   width: 100%;
-		   height: 500px;
-		   text-align: center;
-		}
-
-
-
-		#text-center {
-			display: inline-block;
-			text-align: center;
-		}
-	</style>
+#text-center {
+	display: inline-block;
+	text-align: center;
+}
+</style>
 </head>
 <body>
 	<div id="header">
-	 	<div id="pr">
+		<div id="menu-container">
+			<ul id="navigationMenu">
+				<li><a href="#" class="selectedMenu">HOME</a></li>
+				<li><a href="BuyItemAction" class="normalMenu">PRODUCTLIST</a></li>
+				<li><a href="MyPageAction" class="normalMenu">MYPAGE</a></li>
+				<li><a href="LoginAction" class="normalMenu">LOGIN</a></li>
+			</ul>
 		</div>
 	</div>
 	<div id="main">
-		<div id="top">
-			<p>Home</p>
-		</div>
+
+			<div class="wrapper">
+
+			  <ul id="sb-slider" class="sb-slider">
+                    <li><img src="<s:property value="A"/>" alt="" width="840" height="430" />
+                    </li>
+                    <li><img src="<s:property value="B"/>" alt="" width="840" height="430" />
+                    </li>
+                    <li><img src="<s:property value="C"/>" alt="" width="840" height="430" />
+                    </li>
+                    <li><img src="<s:property value="D"/>" alt="" width="840" height="430" />
+                    </li>
+                    <li><img src="<s:property value="E"/>" alt="" width="840" height="430" />
+                    </li>
+                </ul>
+            </div>
 
 		<div id="text-center">
 			<s:form action="HomeAction">
@@ -73,142 +100,47 @@
 		</div>
 	</div>
 
+	<!--ダウンロードしたファイル-->
+<script src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.slicebox.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+<!--javascript追記-->
+	<script type="text/javascript">
+		$(function() {
+			var Page = (function() {
+				var $navArrows = $('#nav-arrows').hide(), $shadow = $('#shadow')
+						.hide(), slicebox = $('#sb-slider').slicebox({
+					onReady : function() {
+						$navArrows.show();
+						$shadow.show();
+					},
+					orientation : 'r',
+					cuboidsRandom : true,
+					disperseFactor : 30,
+					autoplay : true,
+					interval: 4000
 
-<script>
-var links = [{label: 'link1', bg: '#c0392b'},
-             {label: 'link2', bg: '#16a085'},
-             {label: 'link3', bg: '#8e44ad'},
-             {label: 'link4', bg: '#27ae60'},
-             {label: 'link5', bg: '#f39c12'},
-             {label: 'link6', bg: '#2980b9'}];
-var windowHeight = window.innerHeight;
-if(windowHeight === 0) windowHeight = 238;
-var radius = windowHeight*0.6,
-    circle = document.createElement('div'),
-    borderSize = radius*0.021;
-    totalArea = 48,
-    increment = totalArea/(links.length-1),
-    startPoint = 0-(totalArea/2),
-    fontSize = radius*0.12,
-    linkSize = radius*0.25;
-
-styleCircle();
-addCircle();
-addLinks();
-styleLinks();
-
-function styleCircle() {
-  circle.style.border= borderSize+'px solid #fff';
-  circle.style.width = radius*2+'px';
-  circle.style.height = radius*2+'px';
-  circle.style.borderRadius = radius+'px';
-  circle.style.position = 'absolute';
-  circle.style.top = '-'+radius*0.2+'px';
-  circle.style.left = radius*-1+'px';
-}
-
-function addCircle() {
-  document.body.appendChild(circle);
-}
-
-function addLinks() {
-  for (var i=0, l=links.length; i<l; i++) {
-    link = document.createElement('a'),
-    hover = document.createElement('span');
-    link.href = "#";
-    link.dataset.color = links[i].bg;
-    link.style.display = 'inline-block';
-    link.style.textDecoration = 'none';
-    link.style.color = '#fff';
-    link.style.position = 'absolute';
-    link.style.zIndex = 100;
-    link.innerHTML = links[i].label;
-    hover.style.position = 'absolute';
-    hover.style.display = 'inline-block';
-    hover.style.zIndex = 50;
-    hover.style.opacity = 0;
-    document.body.appendChild(link);
-    document.body.appendChild(hover);
-    link.addEventListener('mouseover', linkOver);
-    link.addEventListener('mouseout', linkOut);
-    links[i].elem = link;
-    links[i].hover = hover;
-  }
-}
-
-function styleLinks() {
-  for (var i=0, l=links.length; i<l; i++) {
-    var link = links[i].elem, hover = links[i].hover, deg = startPoint+(i*increment);
-    link.style.paddingLeft = radius*1.2+'px';
-    link.style.fontSize = fontSize+'px';
-    link.style.height = linkSize+'px';
-    link.style.lineHeight = linkSize+'px';
-    setTransformOrigin(link, '0px '+linkSize*0.5+'px');
-    setTransition(link, 'all 0.2s ease-out');
-    setTransform(link, 'rotate('+deg+'deg)');
-    link.style.left = borderSize+'px';
-    link.style.top = (windowHeight/2) - (windowHeight*0.1)+borderSize+'px';
-
-    hover.style.left = borderSize+'px';
-    setTransformOrigin(hover, '0px '+linkSize*0.5+'px');
-    setTransition(hover, 'all 0.2s ease-out');
-    setTransform(hover, 'rotate('+deg+'deg)');
-    hover.style.top = (windowHeight*0.4)+borderSize +'px';
-    hover.style.width = radius+(borderSize/2)+'px';
-    hover.style.height = linkSize+'px';
-    hover.style.borderRight = borderSize*2+'px solid #fff';
-
-  }
-}
-
-window.onresize = function() {
-  windowHeight = window.innerHeight;
-  radius = windowHeight*0.6,
-  borderSize = radius*0.021;
-  fontSize = radius*0.12,
-  linkSize = radius*0.25;
-  styleCircle();
-  styleLinks();
-}
-
-function linkOver(e) {
-  var thisLink = e.target, thisHover = thisLink.nextSibling;
-  thisLink.style.paddingLeft = radius*1.25+'px';
-  thisHover.style.opacity = 1;
-  document.body.style.backgroundColor = thisLink.dataset.color;
-}
-
-function linkOut(e) {
-  var thisLink = e.target, thisHover = thisLink.nextSibling;
-  thisLink.style.paddingLeft = radius*1.2+'px';
-  thisHover.style.opacity = 0;
-}
-
-function setTransform(element, string) {
-  element.style.webkitTransform = string;
-  element.style.MozTransform = string;
-  element.style.msTransform = string;
-  element.style.OTransform = string;
-  element.style.transform = string;
-}
-
-function setTransformOrigin(element, string) {
-  element.style.webkitTransformOrigin = string;
-  element.style.MozTransformOrigin = string;
-  element.style.msTransformOrigin = string;
-  element.style.OTransformOrigin = string;
-  element.style.transformOrigin = string;
-}
-
-function setTransition(element, string) {
-  element.style.webkitTransition = string;
-  element.style.MozTransition = string;
-  element.style.msTransition = string;
-  element.style.OTransition = string;
-  element.style.transition = string;
-}
-
+				}), init = function() {
+					initEvents();
+				}, initEvents = function() {
+					// add navigation events
+					$navArrows.children(':first').on('click', function() {
+						slicebox.next();
+						return false;
+					});
+					$navArrows.children(':last').on('click', function() {
+						slicebox.previous();
+						return false;
+					});
+				};
+				return {
+					init : init
+				};
+			})();
+			Page.init();
+		});
 	</script>
+
 
 </body>
 </html>
