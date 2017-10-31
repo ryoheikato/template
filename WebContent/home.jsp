@@ -66,7 +66,7 @@ table {
 		<div id="menu-container">
 			<ul id="navigationMenu">
 				<li><a href="#" class="selectedMenu">HOME</a></li>
-				<li><a href="BuyItemAction" class="normalMenu">PRODUCTLIST</a></li>
+				<li><a href="GoBuyItemAction" class="normalMenu">PRODUCTLIST</a></li>
 				<li><a href="MyPageAction" class="normalMenu">MYPAGE</a></li>
 				<li><a href="LoginAction" class="normalMenu">LOGIN</a></li>
 			</ul>

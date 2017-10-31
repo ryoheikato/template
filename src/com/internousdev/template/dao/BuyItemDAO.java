@@ -20,12 +20,13 @@ public class BuyItemDAO {
 	 *
 	 * @return BuyItemDTO
 	 */
-	public BuyItemDTO getBuyItemInfo() {
+	public BuyItemDTO select(int id) {
 
-		String sql = "SELECT id, item_name, item_price FROM item_info";
+		String sql = "SELECT id, item_name, item_price FROM item_info WHERE id=?";
 
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, id);
 			ResultSet resultSet = preparedStatement.executeQuery();
 
 			if(resultSet.next()) {
