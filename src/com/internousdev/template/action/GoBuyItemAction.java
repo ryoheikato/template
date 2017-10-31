@@ -11,6 +11,8 @@ public class GoBuyItemAction extends ActionSupport {
 
 	private int id;
 
+	private String item_image;
+
 	private BuyItemDTO displayList = new BuyItemDTO();
 
 	public String execute() throws SQLException {
@@ -25,6 +27,38 @@ public class GoBuyItemAction extends ActionSupport {
 
 	public BuyItemDTO getDisplayList(){
 		return displayList;
+	}
+
+	public void setDisplayList(BuyItemDTO displayList){
+		this.displayList = displayList;
+	}
+
+	/**
+	 * @return id
+	 */
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * @param id セットする id
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return item_image
+	 */
+	public String getItem_image() {
+		return item_image;
+	}
+
+	/**
+	 * @param item_image セットする item_image
+	 */
+	public void setItem_image(String item_image) {
+		this.item_image = item_image;
 	}
 
 
